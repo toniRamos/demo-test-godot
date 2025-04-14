@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://30ldrw5vignx" path="res://Sprits/fondo.png" id="2_emcp4"]
 [ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="2_rrtif"]
-[ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://MovementCharacter.gd" id="3_7cuts"]
-[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://onClick.gd" id="3_rrtif"]
+[ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_7cuts"]
+[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Sprits/onClick.gd" id="3_rrtif"]
 [ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_ep5lw"]
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_ep5lw"]
 

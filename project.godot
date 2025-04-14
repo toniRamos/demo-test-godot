@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="demo-test"
-run/main_scene="res://principal.tscn"
+run/main_scene="res://Scenes/principal.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Scripts/icon.svg"
 
 [rendering]
 
