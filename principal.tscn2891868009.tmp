@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://buaqdgfg1eoj8"]
+
+[ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://tungtungtungshaungsprite.png" id="2_rrtif"]
+[ext_resource type="Script" uid="uid://bdb6emvxnf3y1" path="res://movementPj.gd" id="3_7cuts"]
+[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://onClick.gd" id="3_rrtif"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
+offset_left = 4.0
+offset_right = 145.0
+offset_bottom = 45.0
+shortcut_context = NodePath(".")
+text = "¡Hazme clic!"
+script = ExtResource("3_rrtif")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("3_7cuts")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(515.75, 449.5)
+scale = Vector2(0.112793, 0.100911)
+texture = ExtResource("2_rrtif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
