@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://buaqdgfg1eoj8"]
 
-[ext_resource type="Texture2D" uid="uid://30ldrw5vignx" path="res://Sprits/fondo.png" id="2_emcp4"]
-[ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="2_rrtif"]
-[ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_7cuts"]
-[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Sprits/onClick.gd" id="3_rrtif"]
-[ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_ep5lw"]
-[ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_ep5lw"]
+[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
+[ext_resource type="Texture2D" uid="uid://30ldrw5vignx" path="res://Sprits/fondo.png" id="2_lop0i"]
+[ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_8ed56"]
+[ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="4_hjo07"]
+[ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_e46k6"]
+[ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrtif"]
 size = Vector2(65, 140)
@@ -22,22 +22,22 @@ offset_right = 145.0
 offset_bottom = 45.0
 shortcut_context = NodePath(".")
 text = "¡Hazme clic!"
-script = ExtResource("3_rrtif")
+script = ExtResource("1_7w63j")
 metadata/_edit_use_anchors_ = true
 
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(342, 336)
 scale = Vector2(0.666992, 0.65332)
-texture = ExtResource("2_emcp4")
+texture = ExtResource("2_lop0i")
 
 [node name="Fondo2" type="Sprite2D" parent="."]
 position = Vector2(1035, 293)
 scale = Vector2(0.688464, 0.573828)
-texture = ExtResource("2_emcp4")
+texture = ExtResource("2_lop0i")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-210, 31)
-script = ExtResource("3_7cuts")
+script = ExtResource("3_8ed56")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(510.5, 448)
@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_rrtif")
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(515.75, 449.5)
 scale = Vector2(0.112793, 0.100911)
-texture = ExtResource("2_rrtif")
+texture = ExtResource("4_hjo07")
 
 [node name="Suelo" type="StaticBody2D" parent="."]
 
@@ -57,11 +57,11 @@ shape = SubResource("RectangleShape2D_7cuts")
 [node name="Sprite2D" type="Sprite2D" parent="Suelo"]
 position = Vector2(575.5, 535)
 scale = Vector2(0.750651, 0.263672)
-texture = ExtResource("5_ep5lw")
+texture = ExtResource("5_e46k6")
 
 [node name="Bombardino" type="Sprite2D" parent="."]
 position = Vector2(534, 341)
 scale = Vector2(0.168825, 0.181491)
-texture = ExtResource("6_ep5lw")
+texture = ExtResource("6_1d07u")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

@@ -13,7 +13,7 @@ config_version=5
 config/name="demo-test"
 run/main_scene="res://Scenes/principal.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://Scripts/icon.svg"
+config/icon="res://Sprits/icon.svg"
 
 [rendering]
 
