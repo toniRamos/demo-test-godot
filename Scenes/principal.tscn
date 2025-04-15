@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=11 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
 [ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="2_7w63j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="4_hjo07"]
 [ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_e46k6"]
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
+[ext_resource type="Script" uid="uid://cov4kr0blxp4l" path="res://Scripts/automaticMovement.gd" id="7_lop0i"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w63j"]
 load_path = "res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
@@ -54,12 +55,12 @@ scale = Vector2(0.105027, 0.0828695)
 texture = ExtResource("2_7w63j")
 
 [node name="Nube3" type="Sprite2D" parent="."]
-position = Vector2(420, 248)
+position = Vector2(527, 216)
 scale = Vector2(0.203221, 0.158187)
 texture = ExtResource("2_7w63j")
 
 [node name="Nube2" type="Sprite2D" parent="."]
-position = Vector2(532, 122)
+position = Vector2(688, 96)
 scale = Vector2(0.0451148, 0.0331709)
 texture = ExtResource("2_7w63j")
 
@@ -93,9 +94,13 @@ scale = Vector2(0.750651, 0.263672)
 texture = ExtResource("5_e46k6")
 
 [node name="Bombardino" type="Sprite2D" parent="."]
-position = Vector2(534, 341)
+position = Vector2(394, 184)
 scale = Vector2(0.168825, 0.181491)
 texture = ExtResource("6_1d07u")
+script = ExtResource("7_lop0i")
+end_pos = Vector2(1200, 200)
+speed = 200.0
+amplitude = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
