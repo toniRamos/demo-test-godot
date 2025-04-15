@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wjl6ppef1xd7"
-path="res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
+uid="uid://vd0emkds23d1"
+path="res://.godot/imported/nube.png-ac53e2c0b24c52fa8b5677d2d23f7ab9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprits/fondo.png"
-dest_files=["res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"]
+source_file="res://Sprits/nube.png"
+dest_files=["res://.godot/imported/nube.png-ac53e2c0b24c52fa8b5677d2d23f7ab9.ctex"]
 
 [params]
 

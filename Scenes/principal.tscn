@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=10 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
-[ext_resource type="Texture2D" uid="uid://30ldrw5vignx" path="res://Sprits/fondo.png" id="2_lop0i"]
+[ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="2_7w63j"]
 [ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_8ed56"]
 [ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="4_hjo07"]
 [ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_e46k6"]
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w63j"]
+load_path = "res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrtif"]
 size = Vector2(65, 140)
@@ -26,14 +29,44 @@ script = ExtResource("1_7w63j")
 metadata/_edit_use_anchors_ = true
 
 [node name="Fondo" type="Sprite2D" parent="."]
-position = Vector2(342, 336)
-scale = Vector2(0.666992, 0.65332)
-texture = ExtResource("2_lop0i")
+position = Vector2(576.25, 336)
+scale = Vector2(1.12451, 0.65332)
+texture = SubResource("CompressedTexture2D_7w63j")
 
-[node name="Fondo2" type="Sprite2D" parent="."]
-position = Vector2(1035, 293)
-scale = Vector2(0.688464, 0.573828)
-texture = ExtResource("2_lop0i")
+[node name="Nube7" type="Sprite2D" parent="."]
+position = Vector2(139, 497)
+scale = Vector2(0.253958, 0.200059)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube6" type="Sprite2D" parent="."]
+position = Vector2(811, 415)
+scale = Vector2(0.166325, 0.143081)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube5" type="Sprite2D" parent="."]
+position = Vector2(174, 134)
+scale = Vector2(0.123576, 0.108292)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube4" type="Sprite2D" parent="."]
+position = Vector2(220, 270)
+scale = Vector2(0.105027, 0.0828695)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube3" type="Sprite2D" parent="."]
+position = Vector2(420, 248)
+scale = Vector2(0.203221, 0.158187)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube2" type="Sprite2D" parent="."]
+position = Vector2(532, 122)
+scale = Vector2(0.0451148, 0.0331709)
+texture = ExtResource("2_7w63j")
+
+[node name="Nube1" type="Sprite2D" parent="."]
+position = Vector2(871, 182)
+scale = Vector2(0.212402, 0.182129)
+texture = ExtResource("2_7w63j")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-210, 31)
