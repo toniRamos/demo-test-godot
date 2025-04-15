@@ -64,4 +64,11 @@ position = Vector2(534, 341)
 scale = Vector2(0.168825, 0.181491)
 texture = ExtResource("6_1d07u")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Counter" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Saltos: 0"
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
