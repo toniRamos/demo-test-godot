@@ -127,12 +127,11 @@ texture = ExtResource("4_hjo07")
 position = Vector2(513, 446)
 scale = Vector2(0.127604, 0.106608)
 sprite_frames = SubResource("SpriteFrames_lop0i")
-animation = &"attack"
+animation = &"stay"
 
 [node name="Bate" type="CollisionShape2D" parent="Player"]
 position = Vector2(472, 439)
 rotation = 0.190241
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8ed56")
 debug_color = Color(0.641391, 0.000458012, 0.67674, 0.419608)
 
@@ -141,7 +140,6 @@ offset_left = -39.7793
 offset_top = -32.0562
 offset_right = 0.220703
 offset_bottom = -9.0562
-text = "PAM!"
 
 [node name="Suelo" type="StaticBody2D" parent="."]
 
