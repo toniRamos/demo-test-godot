@@ -1,7 +1,7 @@
-extends Node2D  # o Sprite2D si querés que sea visible
+extends Sprite2D
 
-@export var start_pos: Vector2 = Vector2(100, 200)
-@export var end_pos: Vector2 = Vector2(600, 200)
+@export var start_pos: Vector2 = Vector2(-200, 200)
+@export var end_pos: Vector2 = Vector2(1400, 200)
 @export var speed: float = 100.0
 @export var frequency: float = 2.0
 @export var amplitude: float = 30.0
@@ -11,6 +11,7 @@ var direction: int = 1
 
 func _ready():
 	position = start_pos
+	flip_h = direction < 0
 	queue_redraw()
 
 func _process(delta: float) -> void:
@@ -23,14 +24,7 @@ func _process(delta: float) -> void:
 
 	position = Vector2(x, y)
 
+	# Cambiar de dirección y actualizar flip inmediatamente
 	if progress >= 1.0 or progress <= 0.0:
 		direction *= -1
-
-#func _draw():
-	#draw_line(start_pos, end_pos, Color.LIME_GREEN, 2.0)
-	#draw_circle(start_pos, 5.0, Color.RED)
-	#draw_circle(end_pos, 5.0, Color.BLUE)
-
-func _notification(what):
-	if what == NOTIFICATION_TRANSFORM_CHANGED:
-		queue_redraw()
+		flip_h = direction < 0

@@ -201,7 +201,6 @@ position = Vector2(394, 184)
 scale = Vector2(0.168825, 0.181491)
 texture = ExtResource("6_1d07u")
 script = ExtResource("7_lop0i")
-end_pos = Vector2(1200, 200)
 speed = 200.0
 amplitude = 60.0
 
