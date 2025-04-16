@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0lmoj0epkkm6"]
+
+[ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="1_4jry3"]
+[ext_resource type="Script" uid="uid://m764b3hmk0d5" path="res://Scripts/nubeMovement.gd" id="2_sginr"]
+
+[node name="Cloud" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(71.5, 68.5)
+scale = Vector2(0.139648, 0.133789)
+texture = ExtResource("1_4jry3")
+script = ExtResource("2_sginr")
