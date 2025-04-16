@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpc2by3f0gxgy"]
+
+[ext_resource type="Script" uid="uid://bb3qr1qyf5sc3" path="res://Scenes/Prefabs/tralaleroTralala/tralalero_tralala.gd" id="1_3n83l"]
+[ext_resource type="Texture2D" uid="uid://ctmmvgqnnw0f1" path="res://Sprits/tralalero-tralala.png" id="2_bowmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_natqm"]
+size = Vector2(202, 129)
+
+[node name="TralaleroTralala" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_3n83l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_natqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_bowmi")
+flip_h = true

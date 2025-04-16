@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Variables de movimiento
 var speed := 200
-var jump_force := -400
+var jump_force := -600
 var gravity := 900
 var jump_counter := 0
 var is_attacking: bool = false

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=16 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
+[ext_resource type="Script" uid="uid://dedwiyshteoqk" path="res://Scenes/principal.gd" id="1_hjo07"]
 [ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="2_7w63j"]
 [ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_8ed56"]
 [ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="4_hjo07"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_e46k6"]
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
 [ext_resource type="Script" uid="uid://cov4kr0blxp4l" path="res://Scripts/automaticMovement.gd" id="7_lop0i"]
+[ext_resource type="PackedScene" uid="uid://bpc2by3f0gxgy" path="res://Scenes/Prefabs/tralaleroTralala/tralalero_tralala.tscn" id="9_hjo07"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w63j"]
 load_path = "res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
@@ -58,6 +60,8 @@ size = Vector2(77.67, 18.5018)
 size = Vector2(1145, 85)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_hjo07")
+shark_scene = ExtResource("9_hjo07")
 
 [node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
 visible = false
@@ -124,10 +128,11 @@ scale = Vector2(0.112793, 0.100911)
 texture = ExtResource("4_hjo07")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(513, 446)
+position = Vector2(514, 427)
 scale = Vector2(0.127604, 0.106608)
 sprite_frames = SubResource("SpriteFrames_lop0i")
 animation = &"stay"
+flip_h = true
 
 [node name="Bate" type="CollisionShape2D" parent="Player"]
 position = Vector2(472, 439)
@@ -148,8 +153,8 @@ position = Vector2(573.5, 627)
 shape = SubResource("RectangleShape2D_7cuts")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo"]
-position = Vector2(575.5, 535)
-scale = Vector2(0.750651, 0.263672)
+position = Vector2(575.5, 529)
+scale = Vector2(0.750651, 0.275391)
 texture = ExtResource("5_e46k6")
 
 [node name="Bombardino" type="Sprite2D" parent="."]
@@ -169,5 +174,10 @@ offset_bottom = 23.0
 text = "Saltos: 0"
 metadata/_edit_use_anchors_ = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
