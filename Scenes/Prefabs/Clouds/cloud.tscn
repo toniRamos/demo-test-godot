@@ -6,6 +6,7 @@
 [node name="Cloud" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(71.5, 68.5)
 scale = Vector2(0.139648, 0.133789)
 texture = ExtResource("1_4jry3")

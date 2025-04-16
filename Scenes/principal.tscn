@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=19 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
 [ext_resource type="Script" uid="uid://dedwiyshteoqk" path="res://Scenes/principal.gd" id="1_hjo07"]
@@ -61,6 +61,9 @@ size = Vector2(77.67, 18.5018)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cuts"]
 size = Vector2(1145, 85)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c6i7"]
+size = Vector2(70, 684)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hjo07")
 shark_scene = ExtResource("9_hjo07")
@@ -81,49 +84,75 @@ position = Vector2(576.25, 336)
 scale = Vector2(1.12451, 0.65332)
 texture = SubResource("CompressedTexture2D_7w63j")
 
-[node name="Nube7" type="Sprite2D" parent="."]
-position = Vector2(139, 497)
-scale = Vector2(0.253958, 0.200059)
-texture = ExtResource("2_7w63j")
-
 [node name="Nube6" type="Sprite2D" parent="."]
-position = Vector2(811, 415)
-scale = Vector2(0.166325, 0.143081)
+position = Vector2(534, 103)
+scale = Vector2(0.212402, 0.182129)
 texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
+
+[node name="Nube7" type="Sprite2D" parent="."]
+position = Vector2(18, 108)
+scale = Vector2(0.212402, 0.182129)
+texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
+
+[node name="Nube8" type="Sprite2D" parent="."]
+position = Vector2(881, 458)
+scale = Vector2(0.212402, 0.182129)
+texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
+
+[node name="Nube9" type="Sprite2D" parent="."]
+position = Vector2(987, 149)
+scale = Vector2(0.212402, 0.182129)
+texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
+
+[node name="Nube10" type="Sprite2D" parent="."]
+position = Vector2(524, 311)
+scale = Vector2(0.0451146, 0.033171)
+texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
 
 [node name="Nube5" type="Sprite2D" parent="."]
-position = Vector2(174, 134)
-scale = Vector2(0.123576, 0.108292)
+position = Vector2(156, 430)
+scale = Vector2(0.212402, 0.182129)
 texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
 
 [node name="Nube4" type="Sprite2D" parent="."]
-position = Vector2(220, 270)
-scale = Vector2(0.105027, 0.0828695)
+position = Vector2(568, 433)
+scale = Vector2(0.0451146, 0.033171)
 texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
 
 [node name="Nube3" type="Sprite2D" parent="."]
-position = Vector2(527, 216)
-scale = Vector2(0.203221, 0.158187)
+position = Vector2(170, 171)
+scale = Vector2(0.0451146, 0.033171)
 texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
 
 [node name="Nube2" type="Sprite2D" parent="."]
-position = Vector2(688, 96)
-scale = Vector2(0.0451148, 0.0331709)
+position = Vector2(157, 328)
+scale = Vector2(0.0451146, 0.033171)
 texture = ExtResource("2_7w63j")
+script = ExtResource("5_1d07u")
 
 [node name="Nube1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(871, 182)
+position = Vector2(710, 230)
 scale = Vector2(0.212402, 0.182129)
 texture = ExtResource("2_7w63j")
 script = ExtResource("5_1d07u")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-210, 31)
+position = Vector2(-211, 30)
+collision_layer = 3
+collision_mask = 2
+platform_wall_layers = 1
 script = ExtResource("3_8ed56")
 
 [node name="ColliderBody" type="CollisionShape2D" parent="Player"]
-position = Vector2(510.5, 448)
+position = Vector2(515, 431)
 shape = SubResource("RectangleShape2D_rrtif")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -133,6 +162,7 @@ scale = Vector2(0.112793, 0.100911)
 texture = ExtResource("4_hjo07")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+z_index = 2
 position = Vector2(514, 427)
 scale = Vector2(0.127604, 0.106608)
 sprite_frames = SubResource("SpriteFrames_lop0i")
@@ -152,17 +182,21 @@ offset_right = 0.220703
 offset_bottom = -9.0562
 
 [node name="Suelo" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
 position = Vector2(573.5, 627)
 shape = SubResource("RectangleShape2D_7cuts")
 
 [node name="Sprite2D" type="Sprite2D" parent="Suelo"]
+z_index = 2
 position = Vector2(575.5, 529)
 scale = Vector2(0.750651, 0.275391)
 texture = ExtResource("5_e46k6")
 
 [node name="Bombardino" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(394, 184)
 scale = Vector2(0.168825, 0.181491)
 texture = ExtResource("6_1d07u")
@@ -186,6 +220,27 @@ autostart = true
 [node name="SpawnClouds" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1189, 332)
+shape = SubResource("RectangleShape2D_4c6i7")
+debug_color = Color(0.724367, 0.477039, 0, 0.42)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-40, 1)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-35, 328)
+shape = SubResource("RectangleShape2D_4c6i7")
+debug_color = Color(0.724367, 0.477039, 0, 0.42)
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]

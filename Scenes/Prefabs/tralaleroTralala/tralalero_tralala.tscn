@@ -16,6 +16,7 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_natqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 2
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_bowmi")
 flip_h = true
