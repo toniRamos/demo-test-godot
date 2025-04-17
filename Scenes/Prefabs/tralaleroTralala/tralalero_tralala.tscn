@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://ctmmvgqnnw0f1" path="res://Sprits/tralalero-tralala.png" id="2_bowmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_natqm"]
-size = Vector2(202, 129)
+size = Vector2(171.333, 104)
 
 [node name="TralaleroTralala" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_3n83l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, -0.5)
+position = Vector2(1.33333, 6.66667)
 shape = SubResource("RectangleShape2D_natqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]

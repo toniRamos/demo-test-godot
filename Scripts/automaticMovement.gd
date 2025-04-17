@@ -5,6 +5,8 @@ extends Sprite2D
 @export var speed: float = 100.0
 @export var frequency: float = 2.0
 @export var amplitude: float = 30.0
+@onready var shader_mat := material as ShaderMaterial
+var last_pos := global_position
 
 var t: float = 0.0
 var direction: int = 1
@@ -15,6 +17,11 @@ func _ready():
 	queue_redraw()
 
 func _process(delta: float) -> void:
+	#Shader funcionality
+	var velocity := global_position - last_pos
+
+	last_pos = global_position
+	
 	t += delta * direction
 	var total_distance: float = start_pos.distance_to(end_pos)
 	var progress: float = clamp(t * speed / total_distance, 0.0, 1.0)

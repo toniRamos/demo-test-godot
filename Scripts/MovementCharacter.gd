@@ -38,6 +38,7 @@ func _physics_process(delta):
 	# Flip del sprite
 	if direction != 0:
 		$Sprite2D.flip_h = direction > 0
+		anim_sprite.flip_h = direction > 0
 
 	move_and_slide()
 	

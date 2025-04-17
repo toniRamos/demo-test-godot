@@ -16,8 +16,9 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w63j"]
 load_path = "res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrtif"]
-size = Vector2(65, 140)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c6i7"]
+radius = 27.0
+height = 146.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lop0i"]
 animations = [{
@@ -55,8 +56,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ed56"]
-size = Vector2(77.67, 18.5018)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24505"]
+radius = 9.74658
+height = 98.0499
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cuts"]
 size = Vector2(1145, 85)
@@ -88,7 +90,7 @@ script = ExtResource("1_7w63j")
 metadata/_edit_use_anchors_ = true
 
 [node name="Fondo" type="Sprite2D" parent="."]
-position = Vector2(576.25, 336)
+position = Vector2(576, 335)
 scale = Vector2(1.12451, 0.65332)
 texture = SubResource("CompressedTexture2D_7w63j")
 
@@ -160,8 +162,8 @@ platform_wall_layers = 1
 script = ExtResource("3_8ed56")
 
 [node name="ColliderBody" type="CollisionShape2D" parent="Player"]
-position = Vector2(515, 431)
-shape = SubResource("RectangleShape2D_rrtif")
+position = Vector2(514, 426)
+shape = SubResource("CapsuleShape2D_4c6i7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 visible = false
@@ -178,16 +180,17 @@ animation = &"stay"
 flip_h = true
 
 [node name="Bate" type="CollisionShape2D" parent="Player"]
-position = Vector2(472, 439)
-rotation = 0.190241
-shape = SubResource("RectangleShape2D_8ed56")
+position = Vector2(547, 423)
+rotation = -1.79594
+shape = SubResource("CapsuleShape2D_24505")
 debug_color = Color(0.641391, 0.000458012, 0.67674, 0.419608)
 
 [node name="Label" type="Label" parent="Player/Bate"]
-offset_left = -39.7793
-offset_top = -32.0562
-offset_right = 0.220703
-offset_bottom = -9.0562
+offset_left = 91.8224
+offset_top = -42.5752
+offset_right = 146.822
+offset_bottom = -19.5752
+rotation = 1.76627
 
 [node name="Suelo" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -213,6 +216,7 @@ speed = 200.0
 amplitude = 60.0
 
 [node name="SpeedTrail" type="GPUParticles2D" parent="Bombardino"]
+visible = false
 position = Vector2(-568.636, -11.0198)
 amount = 50
 lifetime = 0.5
@@ -227,7 +231,7 @@ text = "Saltos: 0"
 metadata/_edit_use_anchors_ = true
 
 [node name="SpawnTralaleros" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 autostart = true
 
 [node name="SpawnClouds" type="Timer" parent="."]
