@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=28 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
 [ext_resource type="Script" uid="uid://dedwiyshteoqk" path="res://Scenes/principal.gd" id="1_hjo07"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
 [ext_resource type="Texture2D" uid="uid://6ha556fgdc4c" path="res://Sprits/tungtungtungshaungspriteanimated.png" id="7_8m3se"]
 [ext_resource type="Script" uid="uid://cov4kr0blxp4l" path="res://Scripts/automaticMovement.gd" id="7_lop0i"]
+[ext_resource type="PackedScene" uid="uid://myjpxj6pdek3" path="res://Scenes/Prefabs/testSkeleton/testSkeleton.tscn" id="9_1vrl2"]
 [ext_resource type="PackedScene" uid="uid://bpc2by3f0gxgy" path="res://Scenes/Prefabs/tralaleroTralala/tralalero_tralala.tscn" id="9_hjo07"]
 [ext_resource type="PackedScene" uid="uid://c5twfrkql84av" path="res://Scenes/Prefabs/Tree/TreePrefab.tscn" id="13_24505"]
 
@@ -173,6 +174,9 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(576, 335)
 scale = Vector2(1.12451, 0.65332)
 texture = SubResource("CompressedTexture2D_7w63j")
+
+[node name="Personaje" parent="." instance=ExtResource("9_1vrl2")]
+position = Vector2(110, 48)
 
 [node name="Nube6" type="Sprite2D" parent="."]
 position = Vector2(534, 103)
