@@ -142,7 +142,7 @@ texture = ExtResource("4_hjo07")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 2
 position = Vector2(514, 427)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.11, 0.11)
 sprite_frames = SubResource("SpriteFrames_lop0i")
 animation = &"stay"
 flip_h = true

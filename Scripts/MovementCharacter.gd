@@ -8,9 +8,9 @@ var jump_counter := 0
 var is_attacking: bool = false
 
 # Escalas para diferentes animaciones
-var scale_stay := Vector2(0.15, 0.15)
-var scale_walk := Vector2(0.35, 0.35)  # Walk necesita mayor escala porque los frames son más pequeños
-var scale_attack := Vector2(0.15, 0.15)
+var scale_stay := Vector2(0.11, 0.11)
+var scale_walk := Vector2(0.26, 0.26)  # Walk necesita mayor escala porque los frames son más pequeños
+var scale_attack := Vector2(0.11, 0.11)
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_label = get_node("/root/Main/CanvasLayer/Counter")
