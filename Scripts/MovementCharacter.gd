@@ -71,12 +71,11 @@ func update_kill_counter():
 	kill_label.text = "Muertes: %d" % kill_counter
 
 func _on_bate_body_entered(body: Node2D) -> void:
-	# Verificar si es un tralalero y eliminarlo
+	# Verificar si es un tralalero y activar explosión
 	if body.is_in_group("enemy") or body.name == "CharacterBody2D":
-		# Encontrar el nodo padre (TralaleroTralala)
-		var enemy_parent = body.get_parent()
-		if enemy_parent:
-			enemy_parent.queue_free()
+		# Llamar a la función explode del enemigo
+		if body.has_method("explode"):
+			body.explode()
 			kill_counter += 1
 			update_kill_counter()
 
