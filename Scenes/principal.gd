@@ -23,6 +23,11 @@ func _on_timer_timeout() -> void:
 func _ready():
 	set_random_timer()
 
+func _process(_delta):
+	# Detectar Escape para volver al menú principal
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
 func _on_CloudTimer_timeout():
 	var clouds = clouds_sprite2D.instantiate()
 	clouds.position = Vector2(1300, randf_range(0, 480))    # posición de aparición

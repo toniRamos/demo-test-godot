@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvwx8qm3nf7h5"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_mainmenu"]
+[ext_resource type="PackedScene" uid="uid://b0lmoj0epkkm6" path="res://Scenes/Prefabs/Clouds/cloud.tscn" id="2_clouds"]
+[ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="3_bombardino"]
+[ext_resource type="Script" uid="uid://cov4kr0blxp4l" path="res://Scripts/automaticMovement.gd" id="4_automovement"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fondo"]
+load_path = "res://.godot/imported/fondo.png-bffde79c11f74da13d1e151b3bb13fae.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trail"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 98, 0)
+color = Color(0, 0.505882, 0.505882, 0.501961)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dummy"]
+size = Vector2(70, 684)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
+clouds_sprite2D = ExtResource("2_clouds")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Fondo" type="Sprite2D" parent="Background"]
+position = Vector2(576, 335)
+scale = Vector2(1.12451, 0.65332)
+texture = SubResource("CompressedTexture2D_fondo")
+
+[node name="Bombardino" type="Sprite2D" parent="Background"]
+z_index = 2
+position = Vector2(394, 184)
+scale = Vector2(0.168825, 0.181491)
+texture = ExtResource("3_bombardino")
+script = ExtResource("4_automovement")
+speed = 200.0
+amplitude = 60.0
+
+[node name="SpeedTrail" type="GPUParticles2D" parent="Background/Bombardino"]
+visible = false
+position = Vector2(-568.636, -11.0198)
+amount = 50
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_trail")
+
+[node name="SpawnClouds" type="Timer" parent="Background"]
+wait_time = 2.0
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "DEMO TEST GAME"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "NEW GAME"
+
+[node name="Spacer2" type="Control" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "QUIT"
+
+[connection signal="timeout" from="Background/SpawnClouds" to="." method="_on_CloudTimer_timeout"]
