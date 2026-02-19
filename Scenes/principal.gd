@@ -9,6 +9,12 @@ extends Node2D
 func _on_timer_timeout() -> void:
 	var enemy = shark_scene.instantiate()
 	enemy.position = Vector2(1300, 535)  # posición de aparición
+	
+	# Asignar velocidad aleatoria al tralalero
+	var character_body = enemy.get_node("CharacterBody2D")
+	if character_body:
+		character_body.speed = randf_range(50.0, 150.0)
+	
 	add_child(enemy)
 	tralaleros_timer.wait_time = randf_range(2, 8)
 	tralaleros_timer.start()

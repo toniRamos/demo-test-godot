@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://buaqdgfg1eoj8"]
 
 [ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
-[ext_resource type="Script" path="res://Scenes/principal.gd" id="1_hjo07"]
+[ext_resource type="Script" uid="uid://dedwiyshteoqk" path="res://Scenes/principal.gd" id="1_hjo07"]
 [ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="2_7w63j"]
 [ext_resource type="PackedScene" uid="uid://b0lmoj0epkkm6" path="res://Scenes/Prefabs/Clouds/cloud.tscn" id="3_4c6i7"]
 [ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_8ed56"]
