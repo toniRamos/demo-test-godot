@@ -5,6 +5,7 @@ var speed := 200
 var jump_force := -600
 var gravity := 900
 var jump_counter := 0
+var kill_counter := 0
 var is_attacking: bool = false
 
 # Escalas para diferentes animaciones
@@ -14,8 +15,14 @@ var scale_attack := Vector2(0.11, 0.11)
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_label = get_node("/root/Main/CanvasLayer/Counter")
-@onready var bate = get_node("/root/Main/Player/Bate")
+@onready var kill_label = get_node("/root/Main/CanvasLayer/KillCounter")
+@onready var bate: Area2D = get_node("/root/Main/Player/Bate")
 @onready var label_PAM = get_node("/root/Main/Player/Bate/Label")
+
+func _ready():
+	# Conectar señal del bate para detectar colisiones
+	bate.body_entered.connect(_on_bate_body_entered)
+	bate.monitoring = false  # Desactivar detección hasta que ataque
 
 
 func _physics_process(delta):
@@ -28,7 +35,7 @@ func _physics_process(delta):
 		is_attacking = true
 		anim_sprite.scale = scale_attack
 		anim_sprite.play("attack")
-		bate.disabled = false
+		bate.monitoring = true  # Activar detección de colisiones del bate
 		label_PAM.text = "PAM!"
 
 	# Aplicar gravedad
@@ -60,10 +67,23 @@ func _physics_process(delta):
 func update_jump_counter():
 	jump_label.text = "Saltos: %d" % jump_counter
 
+func update_kill_counter():
+	kill_label.text = "Muertes: %d" % kill_counter
+
+func _on_bate_body_entered(body: Node2D) -> void:
+	# Verificar si es un tralalero y eliminarlo
+	if body.is_in_group("enemy") or body.name == "CharacterBody2D":
+		# Encontrar el nodo padre (TralaleroTralala)
+		var enemy_parent = body.get_parent()
+		if enemy_parent:
+			enemy_parent.queue_free()
+			kill_counter += 1
+			update_kill_counter()
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim_sprite.animation == "attack":
 		is_attacking = false
-		bate.disabled = true
+		bate.monitoring = false  # Desactivar detección del bate
 		label_PAM.text = ""
 		anim_sprite.scale = scale_stay
 		anim_sprite.play("stay")

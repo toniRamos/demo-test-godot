@@ -9,7 +9,7 @@ size = Vector2(171.333, 104)
 [node name="TralaleroTralala" type="Node2D"]
 scale = Vector2(0.75, 0.75)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_3n83l")

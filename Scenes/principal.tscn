@@ -147,9 +147,13 @@ sprite_frames = SubResource("SpriteFrames_lop0i")
 animation = &"stay"
 flip_h = true
 
-[node name="Bate" type="CollisionShape2D" parent="Player"]
+[node name="Bate" type="Area2D" parent="Player"]
 position = Vector2(547, 423)
 rotation = -1.79594
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Bate"]
 shape = SubResource("CapsuleShape2D_24505")
 debug_color = Color(0.641391, 0.000458012, 0.67674, 0.419608)
 
@@ -278,6 +282,13 @@ process_material = SubResource("ParticleProcessMaterial_4c6i7")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Saltos: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="KillCounter" type="Label" parent="CanvasLayer"]
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 48.0
+text = "Muertes: 0"
 metadata/_edit_use_anchors_ = true
 
 [node name="SpawnTralaleros" type="Timer" parent="."]
