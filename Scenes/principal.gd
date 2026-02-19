@@ -1,10 +1,35 @@
 extends Node2D
 
-@onready var cloud_timer = $SpawnClouds
 @onready var tralaleros_timer = $SpawnTralaleros
+@onready var player = $Player
+@onready var jump_label = $CanvasLayer/Counter
+@onready var kill_label = $CanvasLayer/KillCounter
 
 @export var shark_scene: PackedScene  # Arrastrás aquí el SharkEnemy.tscn en el editor
-@export var clouds_sprite2D: PackedScene
+
+func _ready():
+	# Conectar señales del jugador con la UI
+	if player:
+		player.jump_performed.connect(_on_player_jump)
+		player.enemy_killed.connect(_on_enemy_killed)
+
+func _process(_delta):
+	# Detectar Escape para volver al menú principal
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+func _exit_tree():
+	# Limpiar recursos al salir de la escena
+	if tralaleros_timer:
+		tralaleros_timer.stop()
+
+func _on_player_jump(jump_count: int) -> void:
+	if jump_label:
+		jump_label.text = "Saltos: %d" % jump_count
+
+func _on_enemy_killed(kill_count: int) -> void:
+	if kill_label:
+		kill_label.text = "Muertes: %d" % kill_count
 
 func _on_timer_timeout() -> void:
 	var enemy = shark_scene.instantiate()
@@ -19,21 +44,3 @@ func _on_timer_timeout() -> void:
 	tralaleros_timer.wait_time = randf_range(2, 8)
 	tralaleros_timer.start()
 
-
-func _ready():
-	set_random_timer()
-
-func _process(_delta):
-	# Detectar Escape para volver al menú principal
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-
-func _on_CloudTimer_timeout():
-	var clouds = clouds_sprite2D.instantiate()
-	clouds.position = Vector2(1300, randf_range(0, 480))    # posición de aparición
-	add_child(clouds)
-	set_random_timer()
-
-func set_random_timer():
-	cloud_timer.wait_time = randf_range(0.35, 3)
-	cloud_timer.start()

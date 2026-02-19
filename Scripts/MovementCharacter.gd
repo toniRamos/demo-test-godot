@@ -1,28 +1,37 @@
 extends CharacterBody2D
 
-# Variables de movimiento
-var speed := 200
-var jump_force := -600
-var gravity := 900
+## Script de movimiento y combate del jugador
+
+# Contadores
 var jump_counter := 0
 var kill_counter := 0
 var is_attacking: bool = false
 
-# Escalas para diferentes animaciones
-var scale_stay := Vector2(0.11, 0.11)
-var scale_walk := Vector2(0.26, 0.26)  # Walk necesita mayor escala porque los frames son más pequeños
-var scale_attack := Vector2(0.11, 0.11)
+@export_group("Movement")
+@export var speed: float = 200.0
+@export var jump_force: float = -600.0
+@export var gravity: float = 900.0
+
+@export_group("Animation Scales")
+@export var scale_idle: Vector2 = Vector2(0.11, 0.11)
+@export var scale_walk: Vector2 = Vector2(0.26, 0.26)
+@export var scale_attack: Vector2 = Vector2(0.11, 0.11)
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var jump_label = get_node("/root/Main/CanvasLayer/Counter")
-@onready var kill_label = get_node("/root/Main/CanvasLayer/KillCounter")
-@onready var bate: Area2D = get_node("/root/Main/Player/Bate")
-@onready var label_PAM = get_node("/root/Main/Player/Bate/Label")
+@onready var bate: Area2D = $Bate
+@onready var label_PAM: Label = $Bate/Label
+
+# Señales para desacoplar UI
+signal jump_performed(jump_count: int)
+signal enemy_killed(kill_count: int)
 
 func _ready():
 	# Conectar señal del bate para detectar colisiones
-	bate.body_entered.connect(_on_bate_body_entered)
-	bate.monitoring = false  # Desactivar detección hasta que ataque
+	if bate:
+		bate.body_entered.connect(_on_bate_body_entered)
+		bate.monitoring = false  # Desactivar detección hasta que ataque
+	else:
+		push_error("Bate node not found!")
 
 
 func _physics_process(delta):
@@ -35,8 +44,10 @@ func _physics_process(delta):
 		is_attacking = true
 		anim_sprite.scale = scale_attack
 		anim_sprite.play("attack")
-		bate.monitoring = true  # Activar detección de colisiones del bate
-		label_PAM.text = "PAM!"
+		if bate:
+			bate.monitoring = true  # Activar detección de colisiones del bate
+		if label_PAM:
+			label_PAM.text = "PAM!"
 
 	# Aplicar gravedad
 	if not is_on_floor():
@@ -59,16 +70,16 @@ func _physics_process(delta):
 	else:
 		if not is_attacking and is_on_floor():
 			if anim_sprite.animation != "stay":
-				anim_sprite.scale = scale_stay
+				anim_sprite.scale = scale_idle
 				anim_sprite.play("stay")
 
 	move_and_slide()
 	
 func update_jump_counter():
-	jump_label.text = "Saltos: %d" % jump_counter
+	jump_performed.emit(jump_counter)
 
 func update_kill_counter():
-	kill_label.text = "Muertes: %d" % kill_counter
+	enemy_killed.emit(kill_counter)
 
 func _on_bate_body_entered(body: Node2D) -> void:
 	# Verificar si es un tralalero y activar explosión
@@ -82,7 +93,9 @@ func _on_bate_body_entered(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim_sprite.animation == "attack":
 		is_attacking = false
-		bate.monitoring = false  # Desactivar detección del bate
-		label_PAM.text = ""
-		anim_sprite.scale = scale_stay
+		if bate:
+			bate.monitoring = false  # Desactivar detección del bate
+		if label_PAM:
+			label_PAM.text = ""
+		anim_sprite.scale = scale_idle
 		anim_sprite.play("stay")

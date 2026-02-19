@@ -1,17 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://buaqdgfg1eoj8"]
+[gd_scene load_steps=26 format=3 uid="uid://buaqdgfg1eoj8"]
 
-[ext_resource type="Script" uid="uid://ba7eufi35p1j3" path="res://Scripts/onClick.gd" id="1_7w63j"]
 [ext_resource type="Script" uid="uid://dedwiyshteoqk" path="res://Scenes/principal.gd" id="1_hjo07"]
-[ext_resource type="Texture2D" uid="uid://vd0emkds23d1" path="res://Sprits/nube.png" id="2_7w63j"]
 [ext_resource type="PackedScene" uid="uid://b0lmoj0epkkm6" path="res://Scenes/Prefabs/Clouds/cloud.tscn" id="3_4c6i7"]
 [ext_resource type="Script" uid="uid://cw4bd0030dv0y" path="res://Scripts/MovementCharacter.gd" id="3_8ed56"]
 [ext_resource type="Texture2D" uid="uid://bsr4dkoa7oamv" path="res://Sprits/tungtungtungshaungsprite.png" id="4_hjo07"]
-[ext_resource type="Script" uid="uid://m764b3hmk0d5" path="res://Scripts/nubeMovement.gd" id="5_1d07u"]
 [ext_resource type="Texture2D" uid="uid://870osuou8t" path="res://Sprits/tungtungtungtungshaunGolpeando.png" id="5_8ed56"]
 [ext_resource type="Texture2D" uid="uid://jk4qee0uka1b" path="res://Sprits/floorSprite.png" id="5_e46k6"]
 [ext_resource type="Texture2D" uid="uid://cdfntpa7tyrp3" path="res://Sprits/bombardinoCocodrilloSprite.png" id="6_1d07u"]
 [ext_resource type="Texture2D" uid="uid://6ha556fgdc4c" path="res://Sprits/tungtungtungshaungspriteanimated.png" id="7_8m3se"]
 [ext_resource type="Script" uid="uid://cov4kr0blxp4l" path="res://Scripts/automaticMovement.gd" id="7_lop0i"]
+[ext_resource type="Script" path="res://Scripts/CloudSpawner.gd" id="8_clouds"]
 [ext_resource type="PackedScene" uid="uid://myjpxj6pdek3" path="res://Scenes/Prefabs/testSkeleton/testSkeleton.tscn" id="9_1vrl2"]
 [ext_resource type="PackedScene" uid="uid://bpc2by3f0gxgy" path="res://Scenes/Prefabs/tralaleroTralala/tralalero_tralala.tscn" id="9_hjo07"]
 [ext_resource type="PackedScene" uid="uid://c5twfrkql84av" path="res://Scenes/Prefabs/Tree/TreePrefab.tscn" id="13_24505"]
@@ -120,7 +118,6 @@ size = Vector2(70, 684)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hjo07")
 shark_scene = ExtResource("9_hjo07")
-clouds_sprite2D = ExtResource("3_4c6i7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-211, 30)
@@ -164,16 +161,6 @@ offset_right = 146.822
 offset_bottom = -19.5752
 rotation = 1.76627
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
-visible = false
-offset_left = 4.0
-offset_right = 145.0
-offset_bottom = 45.0
-shortcut_context = NodePath(".")
-text = "¡Hazme clic!"
-script = ExtResource("1_7w63j")
-metadata/_edit_use_anchors_ = true
-
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(576, 335)
 scale = Vector2(1.12451, 0.65332)
@@ -182,66 +169,6 @@ texture = SubResource("CompressedTexture2D_7w63j")
 [node name="Personaje" parent="." instance=ExtResource("9_1vrl2")]
 visible = false
 position = Vector2(110, 48)
-
-[node name="Nube6" type="Sprite2D" parent="."]
-position = Vector2(534, 103)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube7" type="Sprite2D" parent="."]
-position = Vector2(18, 108)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube8" type="Sprite2D" parent="."]
-position = Vector2(881, 458)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube9" type="Sprite2D" parent="."]
-position = Vector2(987, 149)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube10" type="Sprite2D" parent="."]
-position = Vector2(524, 311)
-scale = Vector2(0.0451146, 0.033171)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube5" type="Sprite2D" parent="."]
-position = Vector2(156, 430)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube4" type="Sprite2D" parent="."]
-position = Vector2(568, 433)
-scale = Vector2(0.0451146, 0.033171)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube3" type="Sprite2D" parent="."]
-position = Vector2(170, 171)
-scale = Vector2(0.0451146, 0.033171)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube2" type="Sprite2D" parent="."]
-position = Vector2(157, 328)
-scale = Vector2(0.0451146, 0.033171)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
-
-[node name="Nube1" type="Sprite2D" parent="."]
-position = Vector2(710, 230)
-scale = Vector2(0.212402, 0.182129)
-texture = ExtResource("2_7w63j")
-script = ExtResource("5_1d07u")
 
 [node name="TreePrefab" parent="." instance=ExtResource("13_24505")]
 position = Vector2(567, 447)
@@ -295,9 +222,9 @@ metadata/_edit_use_anchors_ = true
 wait_time = 8.0
 autostart = true
 
-[node name="SpawnClouds" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
+[node name="CloudSpawner" type="Node" parent="."]
+script = ExtResource("8_clouds")
+cloud_scene = ExtResource("3_4c6i7")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -321,6 +248,4 @@ shape = SubResource("RectangleShape2D_4c6i7")
 debug_color = Color(0.724367, 0.477039, 0, 0.42)
 
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="timeout" from="SpawnTralaleros" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="SpawnClouds" to="." method="_on_CloudTimer_timeout"]
