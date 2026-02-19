@@ -7,6 +7,11 @@ var gravity := 900
 var jump_counter := 0
 var is_attacking: bool = false
 
+# Escalas para diferentes animaciones
+var scale_stay := Vector2(0.15, 0.15)
+var scale_walk := Vector2(0.35, 0.35)  # Walk necesita mayor escala porque los frames son más pequeños
+var scale_attack := Vector2(0.15, 0.15)
+
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_label = get_node("/root/Main/CanvasLayer/Counter")
 @onready var bate = get_node("/root/Main/Player/Bate")
@@ -21,6 +26,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_accept"):
 		is_attacking = true
+		anim_sprite.scale = scale_attack
 		anim_sprite.play("attack")
 		bate.disabled = false
 		label_PAM.text = "PAM!"
@@ -35,10 +41,19 @@ func _physics_process(delta):
 			jump_counter += 1
 			update_jump_counter()
 
-	# Flip del sprite
+	# Flip del sprite y gestión de animaciones
 	if direction != 0:
 		$Sprite2D.flip_h = direction > 0
 		anim_sprite.flip_h = direction > 0
+		if not is_attacking and is_on_floor():
+			if anim_sprite.animation != "walk":
+				anim_sprite.scale = scale_walk
+				anim_sprite.play("walk")
+	else:
+		if not is_attacking and is_on_floor():
+			if anim_sprite.animation != "stay":
+				anim_sprite.scale = scale_stay
+				anim_sprite.play("stay")
 
 	move_and_slide()
 	
@@ -50,4 +65,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_attacking = false
 		bate.disabled = true
 		label_PAM.text = ""
+		anim_sprite.scale = scale_stay
 		anim_sprite.play("stay")
